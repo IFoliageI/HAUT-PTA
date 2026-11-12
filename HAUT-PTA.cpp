@@ -1,17 +1,16 @@
 ﻿#include <iostream>
-#include <iomanip>
-#define Base 1500
 using namespace std;
 
-int main()
-{
-	double input = 0;
+int main() {
 
-	cin >> input;
+	int score = 0;
+	cin >> score;
 
-	if (input <= 10000) cout << fixed << setprecision(2) << Base + input * 0.05;
-	else if (10000 < input && input <= 50000) cout << fixed << setprecision(2) << Base + (10000 * 0.05) + ((input - 10000) * 0.03);
-	else if (input > 50000) cout << fixed << setprecision(2) << Base + (10000 * 0.05) + (40000 * 0.03) + ((input - 50000) * 0.02);
+	if (score >= 90) cout << "A";
+	else if (score >= 80) cout << "B";
+	else if (score >= 70) cout << "C";
+	else if (score >= 60) 	cout << "D";
+	else cout << "E";
 
 	return 0;
 }
