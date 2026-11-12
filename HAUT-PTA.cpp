@@ -1,22 +1,31 @@
 ﻿#include <iostream>
-#include <iomanip>
 using namespace std;
 
 int main()
 {
-	double input[2] = {};
-	double output = 0;
+	int input[5] = {};
+	int output[2] = {};
 
-	for (int cycle = 0;cycle < 2;++cycle) {
+	for (int cycle = 0;cycle < 5;++cycle) {
 		cin >> input[cycle];
 	}
 
-	output = input[1];
+	int  oriSquare = 2 * (input[0] * input[1] + input[0] * input[2] + input[1] * input[2]);
+	int addSquare = 4 * (2 * input[3] * (input[0] - 2 * input[4]) +
+	             	2 * input[3] * (input[1] - 2 * input[4]) +
+	               	2 * input[3] * (input[2] - 2 * input[4]));
+	output[0] = oriSquare + addSquare;
 
-	for (int cycle = 0; cycle < input[0]; ++cycle) {
-		output = output + output * 0.0225;
-	}
+	// 8x d*(a-2e)  8x d*(c-2e)  4x d*(b-2e) --> wrong
+	// 8x d*(a-2e)  8x d*(b-2e)  8x d*(c-2e)
 
-	cout << fixed << setprecision(6) << output;
+	int allSize = input[0] * input[1] * input[2];
+	int missSize = 2 * input[3] * (
+	              	(input[0] - 2 * input[4]) * (input[1] - 2 * input[4]) +
+	              	(input[0] - 2 * input[4]) * (input[2] - 2 * input[4]) +
+	              	(input[1] - 2 * input[4]) * (input[2] - 2 * input[4]));
+	output[1] = allSize - missSize;
+
+	cout << output[0] << " " << output[1];
 	return 0;
 }
