@@ -3,15 +3,12 @@ using namespace std;
 
 int main()
 {
-	int input = 0;
-	cin >> input;
+	int year = 0;
+	cin >> year;
 
-	int Hun = input / 100;
-	int Ten = (input - (Hun * 100)) / 10;
-	int Num = (input - (Hun * 100) - (Ten * 10));
-
-	if (input == Hun * Hun * Hun + (Ten * Ten * Ten) + (Num * Num * Num)) cout << "yes";
-	else cout << "no";
+	if (year % 400 == 0) cout << "Yes";
+	else if (year % 4 == 0 && year % 100 != 0) cout << "Yes";
+	else cout << "No";
 
 	return 0;
 }
