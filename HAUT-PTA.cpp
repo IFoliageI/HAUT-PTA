@@ -1,20 +1,26 @@
 ﻿#include <iostream>
-#include <iomanip>
-#define Price 50
 using namespace std;
 
 int main()
 {
-	int input = 0;
+	int input[2] = {};
+	int output[2] = {};
 
-	cin >> input;
+	for (int cycle = 0;cycle < 2;++cycle) {
+		cin >> input[cycle];
+	}
 
-	if (input<30) {
-		cout << fixed << setprecision(2) << (double)input * Price;
+	if (input[0] < input[1]) {
+		output[0] = input[0];
+		output[1] = input[1];
 	}
-	else { 
-		cout << fixed << setprecision(2) << (double)input * (Price - 2);
+	else
+	{
+		output[0] = input[1];
+		output[1] = input[0];
 	}
+
+	cout << output[0] << " " << output[1];
 
 	return 0;
 }
