@@ -1,25 +1,18 @@
 ﻿#include <iostream>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
-	int input[3] = {};
-	int sides[3] = {};
+	int input[2] = {};
 
-	for (int cycle = 0;cycle < 3;++cycle) {
+	for (int cycle = 0;cycle < 2;++cycle) {
 		cin >> input[cycle];
 	}
 
-	copy(input, input + 3, sides);
-	sort(sides, sides + 3);
-
-	if (sides[2] - sides[0]<sides[1] 
-		&& sides[0] + sides[1]>sides[2] 
-		&& sides[2] * sides[2] == (sides[1] * sides[1]) + (sides[0] * sides[0])) 
-		cout << "yes";
-
-	else cout << "no";
+	if (input[0] > 0 && input[1] > 0) cout << "1";
+	else if (input[0] > 0 && input[1] < 0) cout << "4";
+	else if (input[1] > 0 && input[0] < 0) cout << "2";
+	else if (input[1] < 0 && input[0] < 0) cout << "3";
 
 	return 0;
 }
