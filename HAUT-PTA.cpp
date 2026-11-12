@@ -14,8 +14,12 @@ int main()
 	copy(input, input + 3, sides);
 	sort(sides, sides + 3);
 
-	if (sides[2] - sides[0]<sides[1] && sides[0] + sides[1]>sides[2]) cout << "Yes";
-	else cout << "No";
+	if (sides[2] - sides[0]<sides[1] 
+		&& sides[0] + sides[1]>sides[2] 
+		&& sides[2] * sides[2] == (sides[1] * sides[1]) + (sides[0] * sides[0])) 
+		cout << "yes";
+
+	else cout << "no";
 
 	return 0;
 }
