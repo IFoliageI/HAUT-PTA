@@ -1,19 +1,18 @@
-﻿#include <iomanip>
+﻿#include <cmath>
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	double input = 0, rate = 1.0;
+	double input, output;
 
 	cin >> input;
 
-	if (input >= 5000) rate = 0.8;
-	else if (input >= 3000) rate = 0.85;
-	else if (input >= 1000) rate = 0.9;
-	else if (input >= 500) rate = 0.95;
+	if (input < -2) output = 7 - 2 * input;
+	else if (input >= -2 && input < 3) output = 5 - fabs(3 * input + 2);
+	else output = 3 * input + 4;
 
-	cout << fixed << setprecision(2) << input * rate;
+	cout << output;
 
 	return 0;
 }
