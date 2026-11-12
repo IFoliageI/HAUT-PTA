@@ -1,18 +1,16 @@
-﻿#define PI 3.14159
-#include <iostream>
+﻿#include <iostream>
 #include <iomanip>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-	double input[2] = {};
+	double input = 0;
 	double output = 0;
 
-	for (int cycle = 0;cycle < 2;++cycle) {
-		cin >> input[cycle];
-	}
+	cin >> input;
 
-	output = 2 * PI * input[0] * input[1] + 2 * PI * input[0] * input[0];
+	output = sqrt(input * input);
 
 	cout << fixed << setprecision(2) << output;
 
