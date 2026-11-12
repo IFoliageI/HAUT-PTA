@@ -1,20 +1,22 @@
-﻿#include <cmath>
+﻿#include <iostream>
 #include <iomanip>
-#include <iostream>
 using namespace std;
 
 int main()
 {
-	double input[3] = {};
-	double output[2] = {};
+	double input[2] = {};
+	double output = 0;
 
-	for (int cycle = 0;cycle < 3;++cycle) {
+	for (int cycle = 0;cycle < 2;++cycle) {
 		cin >> input[cycle];
 	}
 
-	output[0] = (-input[1] + sqrt(input[1] * input[1] - (4 * input[0] * input[2]))) / (2 * input[0]);
-	output[1] = (-input[1] - sqrt(input[1] * input[1] - (4 * input[0] * input[2]))) / (2 * input[0]);
+	output = input[1];
 
-	cout << fixed << setprecision(2) << setw(7) << setfill(' ') << output[0] << setw(7) << setfill(' ') << output[1];
+	for (int cycle = 0; cycle < input[0]; ++cycle) {
+		output = output + output * 0.0225;
+	}
+
+	cout << fixed << setprecision(6) << output;
 	return 0;
 }
