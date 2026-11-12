@@ -14,7 +14,10 @@ int main()
 	copy(input, input + 3, output);
 	sort(output, output + 3);
 
-	cout << output[2];
+	for (int cycle = 2;cycle >= 0;--cycle) {
+		cout << output[cycle];
+		if (cycle != 0) cout << " ";
+	}
 
 	return 0;
 }
