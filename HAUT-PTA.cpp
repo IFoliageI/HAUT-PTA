@@ -6,7 +6,7 @@ int main()
 {
 	char letter;
 	cin >> letter;
-	cout << (char)toupper(letter);
+	cout << toupper(letter) - 64;
 
 	return 0;
 }
