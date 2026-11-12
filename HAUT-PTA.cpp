@@ -1,4 +1,6 @@
 ﻿#include <iostream>
+#include <iomanip>
+#define Price 50
 using namespace std;
 
 int main()
@@ -7,13 +9,11 @@ int main()
 
 	cin >> input;
 
-	int mid = (int)sqrt(input * input);
-
-	if (mid%2==0) {
-		cout << "even" << endl;
+	if (input<30) {
+		cout << fixed << setprecision(2) << (double)input * Price;
 	}
 	else { 
-		cout << "odd" << endl;
+		cout << fixed << setprecision(2) << (double)input * (Price - 2);
 	}
 
 	return 0;
