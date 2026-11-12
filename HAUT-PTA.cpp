@@ -1,26 +1,20 @@
 ﻿#include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-	int input[2] = {};
-	int output[2] = {};
+	int input[3] = {};
+	int output[3] = {};
 
-	for (int cycle = 0;cycle < 2;++cycle) {
+	for (int cycle = 0;cycle < 3;++cycle) {
 		cin >> input[cycle];
 	}
 
-	if (input[0] < input[1]) {
-		output[0] = input[0];
-		output[1] = input[1];
-	}
-	else
-	{
-		output[0] = input[1];
-		output[1] = input[0];
-	}
+	copy(input, input + 3, output);
+	sort(output, output + 3);
 
-	cout << output[0] << " " << output[1];
+	cout << output[2];
 
 	return 0;
 }
