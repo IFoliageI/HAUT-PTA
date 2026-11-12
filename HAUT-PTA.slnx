@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="HAUT-PTA.vcxproj" />
+  <Project Path="HAUT-PTA.vcxproj" Id="6784b94a-e25b-4ed2-adfe-430030b3d712" />
 </Solution>
