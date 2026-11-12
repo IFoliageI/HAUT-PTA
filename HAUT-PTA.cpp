@@ -5,16 +5,14 @@ int main()
 {
 
 
-	int inum1 = 0, inum2 = 0;
-	cin >> inum1 >> inum2;
+	int input = 0;
+	cin >> input;
 
-	int Sum = inum1 + inum2;
-	int Diff = inum1 - inum2;
-	int Prod = inum1 * inum2;
-	int Quot = inum1 / inum2;
-	int Rem = inum1 % inum2;
+	int Hun = input / 100 ;
+	int Ten = (input - (Hun * 100)) / 10 ;
+	int Num = (input - (Hun * 100) - (Ten * 10)) ;
 
-	cout << Sum << " " << Diff << " " << Prod << " " << Quot << " " << Rem;
+	cout << Num << " " << Ten << " " << Hun;
 
 	return 0;
 }
