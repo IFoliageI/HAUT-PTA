@@ -1,16 +1,19 @@
-﻿#include <iostream>
+﻿#include <iomanip>
+#include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
+	double input = 0, rate = 1.0;
 
-	int score = 0;
-	cin >> score;
+	cin >> input;
 
-	if (score >= 90) cout << "A";
-	else if (score >= 80) cout << "B";
-	else if (score >= 70) cout << "C";
-	else if (score >= 60) 	cout << "D";
-	else cout << "E";
+	if (input >= 5000) rate = 0.8;
+	else if (input >= 3000) rate = 0.85;
+	else if (input >= 1000) rate = 0.9;
+	else if (input >= 500) rate = 0.95;
+
+	cout << fixed << setprecision(2) << input * rate;
 
 	return 0;
 }
