@@ -1,20 +1,19 @@
-﻿#include <iostream>
+﻿#define PI 3.14159
+#include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 int main()
 {
-	double input[3] = {};
-	double output = 0;
 
-	for (int cycle = 0;cycle < 3;++cycle) {
-		cin >> input[cycle];
-	}
-	
-	output = (input[0] + input[1] + input[2]) / 3;
 
-	cout << fixed << setprecision(2) << output;
+	int r = 0;
+	cin >> r;
+
+	double l = 2 * PI * r;
+	double s = PI * r * r;
+
+	cout << fixed << setprecision(2) << l << " " << s;
 
 	return 0;
 }
