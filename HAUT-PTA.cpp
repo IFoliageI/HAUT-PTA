@@ -2,11 +2,12 @@
 using namespace std;
 int main()
 {
-	int tree = 0, people = 0;
-	int avg = 0, Remainder = 0;
-	cin >> tree >> people;
-	avg = (tree / people);
-	Remainder = (tree % people);
-	cout << avg << " " << Remainder;
+	int input = 0;
+	int output = 0;
+	
+	cin >> input ;
+	output = 2 * input * input + input + 8;
+	cout << output;
+
 	return 0;
 }
