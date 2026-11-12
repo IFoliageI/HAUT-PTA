@@ -1,16 +1,18 @@
 ﻿#include <iostream>
 #include <iomanip>
-#define Cover 6.5573
+
 using namespace std;
 
 int main()
 {
-	double input = 0;
+	double input[3] = {};
 	double output = 0;
 
-	cin >> input;
-
-	output = Cover * input;
+	for (int cycle = 0;cycle < 3;++cycle) {
+		cin >> input[cycle];
+	}
+	
+	output = (input[0] + input[1] + input[2]) / 3;
 
 	cout << fixed << setprecision(2) << output;
 
