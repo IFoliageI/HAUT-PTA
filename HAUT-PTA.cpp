@@ -1,18 +1,17 @@
 ﻿#include <iostream>
+#include <iomanip>
+#define Base 1500
 using namespace std;
 
 int main()
 {
-	int input[2] = {};
+	double input = 0;
 
-	for (int cycle = 0;cycle < 2;++cycle) {
-		cin >> input[cycle];
-	}
+	cin >> input;
 
-	if (input[0] > 0 && input[1] > 0) cout << "1";
-	else if (input[0] > 0 && input[1] < 0) cout << "4";
-	else if (input[1] > 0 && input[0] < 0) cout << "2";
-	else if (input[1] < 0 && input[0] < 0) cout << "3";
+	if (input <= 10000) cout << fixed << setprecision(2) << Base + input * 0.05;
+	else if (10000 < input && input <= 50000) cout << fixed << setprecision(2) << Base + (10000 * 0.05) + ((input - 10000) * 0.03);
+	else if (input > 50000) cout << fixed << setprecision(2) << Base + (10000 * 0.05) + (40000 * 0.03) + ((input - 50000) * 0.02);
 
 	return 0;
 }
