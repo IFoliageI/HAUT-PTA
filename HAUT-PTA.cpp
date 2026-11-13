@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <cmath>
 #include <iomanip>
 using namespace std;
 
@@ -6,15 +7,29 @@ int main()
 {
 	ios::sync_with_stdio(false);
 
-	int input[2] = {};
+	long long input = 0;
 
-	for (int cycle = 0;cycle < 2;++cycle) cin >> input[cycle];
+	cin >> input;
 
-	for (int cycle = 0; cycle <= input[1] - input[0]; ++cycle) {
-			cout << fixed << setprecision(4) << setw(4) << input[0] + cycle;
-			cout << fixed << setprecision(4) << setw(8) << log(input[0] + cycle);
-			if (cycle != input[1] - input[0]) cout << endl;
-		}
+	long long** output;
+	output = new long long* [input + 1];
+	long long row, column = 2;
+	for (row = 0;row <= input;++row) output[row] = new long long[column];
+
+	for (long long cycle = 0;cycle < input;++cycle) {
+		output[cycle][0] = cycle + 1;
+		output[cycle][1] = 1;
+		for (long long multiply = 1; multiply <= cycle + 1; multiply++) output[cycle][1] = output[cycle][1] * multiply;
+	}
+
+	for (long long cycle = 0;cycle < input;++cycle) {
+		cout << left << setw(4) << output[cycle][0];
+		cout << left << setw(20) << output[cycle][1];
+		if (cycle != input - 1) cout << endl;
+	}
+
+	for (long long cycle = 0; cycle < row; ++cycle) delete[] output[cycle];
+	delete[] output;
 
 	return 0;
 }
