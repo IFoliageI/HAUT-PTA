@@ -1,36 +1,26 @@
-﻿#include <cmath>
-#include <iomanip>
-#include <iostream>
+﻿#include <iostream>
+#include <algorithm>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-	double s1, s2;
-	char op;
+	int input[3] = {};
+	int output[3] = {};
 
-	cin >> s1 >> op >> s2;
+	for (int cycle = 0;cycle < 3;++cycle) cin >> input[cycle];
 
-	switch (op) {
-	case '+':
-		cout << fixed << setprecision(2) << s1 + s2;
-		break;
+	for (int cycle = 0;cycle < 3;++cycle) output[cycle] = fabs(input[cycle]);
 
-	case '-':
-		cout << fixed << setprecision(2) << s1 - s2;
-		break;
+	sort(output, output + 3);
 
-	case '*':
-		cout << fixed << setprecision(2) << s1 * s2;
-		break;
-
-	case '/':
-		if (fabs(s2) < 1e-10) {cout << "Wrong input!";}
-		else {cout << fixed << setprecision(2) << s1 / s2;}
-		break;
-
-	default:
-		cout << "Wrong input!";
-		break;
+	for (int cycle = 0;cycle < 3;++cycle) {
+		if (output[2] == fabs(input[cycle]))
+		{
+			cout << input[cycle];
+			break;
+		}
 	}
+
 	return 0;
 }
