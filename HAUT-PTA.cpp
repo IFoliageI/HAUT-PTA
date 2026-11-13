@@ -1,16 +1,36 @@
-﻿#include <iostream>
+﻿#include <cmath>
+#include <iomanip>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-	int input[2] = {};
-	int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	double s1, s2;
+	char op;
 
-	for (int cycle = 0; cycle < 2; ++cycle) cin >> input[cycle];
+	cin >> s1 >> op >> s2;
 
-	if ((input[0] % 4 == 0 && input[0] % 100 != 0) || (input[0] % 400 == 0)) days[2] = 29;
-	
-	cout << days[input[1]];
+	switch (op) {
+	case '+':
+		cout << fixed << setprecision(2) << s1 + s2;
+		break;
 
+	case '-':
+		cout << fixed << setprecision(2) << s1 - s2;
+		break;
+
+	case '*':
+		cout << fixed << setprecision(2) << s1 * s2;
+		break;
+
+	case '/':
+		if (fabs(s2) < 1e-10) {cout << "Wrong input!";}
+		else {cout << fixed << setprecision(2) << s1 / s2;}
+		break;
+
+	default:
+		cout << "Wrong input!";
+		break;
+	}
 	return 0;
 }
