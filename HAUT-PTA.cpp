@@ -1,17 +1,18 @@
 ﻿#include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-	int input[8192] = {};
-	int output = 0;
+	int input = 0;
+	double output = 0;
 
-	for (int cycle = 0;cycle < 8192;++cycle) cin >> input[cycle];
+	cin >> input;
 
-	for (int cycle = 1;cycle < input[0] + 1;++cycle) output += input[cycle];
+	for (int cycle = 1;cycle < input + 1;++cycle) output += (double)1 / (2 * cycle - 1);
 
-	cout << output;
+	cout << fixed << setprecision(2) << output;
 
 	return 0;
 }
