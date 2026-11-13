@@ -1,23 +1,38 @@
-﻿#include <iomanip>
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+	int input[2] = {};
+	for (int cycle = 0; cycle < 2; ++cycle) cin >> input[cycle];
 
-    int input = 0;
-    cin >> input;
+	int rows = input[1] - input[0] + 1;
+	int cols = 2;
+	int** output = new int* [rows];
+	for (int row = 0; row < rows; ++row) output[row] = new int[cols];
 
-    long long mid = 1;
+	for (int cycle = 0; cycle < rows; ++cycle) {
+		int num = input[0] + cycle;
+		output[cycle][0] = num;
+		if (num % 2 == 0) output[cycle][1] = num * num;
+		else output[cycle][1] = num * num * num;
+	}
 
-    for (int cycle = 1; cycle <= input; ++cycle) {
-        mid = mid * cycle;
+	int EvenSquaredSum = 0;
+	int OddCubedSum = 0;
+	for (int cycle = 0; cycle < rows; ++cycle) {
+		if (output[cycle][0] % 2 == 0) {
+			EvenSquaredSum += output[cycle][1];
+		}
+		else {
+			OddCubedSum += output[cycle][1];
+		}
+	}
 
-        cout << left << setw(4) << cycle;
-        cout << left << setw(20) << mid;
-        if (cycle != input) cout << endl;
-    }
+	cout << EvenSquaredSum << " " << OddCubedSum;
 
-    return 0;
+	for (int row = 0; row < rows; ++row) delete[] output[row];
+	delete[] output;
+
+	return 0;
 }
