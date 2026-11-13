@@ -1,23 +1,17 @@
 ﻿#include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-	ios::sync_with_stdio(false);
+	double input[8192] = {};
 
-	int input = 0;
-	cin >> input;
+	for (int cycle = 0;cycle < 8192;++cycle) cin >> input[cycle];
 
-	int max_num;
-	cin >> max_num;
+	for (int cycle = 1;cycle < input[0] + 1;++cycle) if (input[cycle] < 60) ++input[8191];
 
-	for (int cycle = 1; cycle < input; ++cycle) {
-		int temp;
-		cin >> temp;
+	cout << fixed << setprecision(2) << input[8191] / input[0];
 
-		if (temp > max_num) max_num = temp;
-	}
-
-	cout << max_num;
 	return 0;
 }
