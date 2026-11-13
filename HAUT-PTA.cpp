@@ -1,22 +1,19 @@
 ﻿#include <iostream>
 #include <cmath>
-#include <iomanip>
+#include <algorithm>
 using namespace std;
 
 int main()
 {
-	int input = 0;
-	double output = 0;
+	int input[8192] = {};
+	int output[8192] = {};
 
-	cin >> input;
+	for (int cycle = 0;cycle < 8192;++cycle) cin >> input[cycle];
 
-	for (int cycle = 1;cycle < input + 1;++cycle) 
-	{ 
-		if (cycle % 2 == 0) output += (double)cycle / ((2 * cycle - 1) * -1);
-		else output += (double)cycle / (2 * cycle - 1);
-	}
+	copy(input + 1, input + input[0] + 1, output);
+	sort(output, output + input[0]);
 
-	cout << fixed << setprecision(3) << output;
+	cout << output[input[0] - 1];
 
 	return 0;
 }
