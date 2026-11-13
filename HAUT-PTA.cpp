@@ -1,26 +1,17 @@
 ﻿#include <iostream>
-#include <algorithm>
 #include <cmath>
 using namespace std;
 
 int main()
 {
-	int input[3] = {};
-	int output[3] = {};
+	int input[8192] = {};
+	int output = 0;
 
-	for (int cycle = 0;cycle < 3;++cycle) cin >> input[cycle];
+	for (int cycle = 0;cycle < 8192;++cycle) cin >> input[cycle];
 
-	for (int cycle = 0;cycle < 3;++cycle) output[cycle] = fabs(input[cycle]);
+	for (int cycle = 1;cycle < input[0] + 1;++cycle) output += input[cycle];
 
-	sort(output, output + 3);
-
-	for (int cycle = 0;cycle < 3;++cycle) {
-		if (output[2] == fabs(input[cycle]))
-		{
-			cout << input[cycle];
-			break;
-		}
-	}
+	cout << output;
 
 	return 0;
 }
