@@ -3,17 +3,28 @@ using namespace std;
 
 int main()
 {
-    int input[2] = {};
-    int EvenSquaredSum = 0;
-    int OddCubedSum = 0;
+	int input = 0;
+	int Output = 0;
 
-    for (int cycle = 0; cycle < 2; ++cycle) cin >> input[cycle];
+	cin >> input;
 
-    for (int cycle = input[0]; cycle <= input[1]; ++cycle) {
-        if (cycle % 2 == 0) EvenSquaredSum += cycle * cycle;
-        else OddCubedSum += cycle * cycle * cycle;
-    }
+	int Rows = input;
+	int Columns = 2;
+	int** output = new int* [Rows];
+	for (int row = 0; row < Rows; ++row) output[row] = new int[Columns];
 
-    cout << EvenSquaredSum << " " << OddCubedSum;
-    return 0;
+	for (int cycle = 0; cycle < Rows; ++cycle) {
+		output[cycle][0] = cycle + 1;
+		output[cycle][1] = 1;
+		for (int multiply = 1; multiply <= cycle + 1; ++multiply) output[cycle][1] = output[cycle][1] * multiply;
+	}
+	
+	for (int cycle = 0; cycle < Rows; ++cycle) Output += output[cycle][1];
+
+	cout << Output;
+
+	for (int row = 0; row < Rows; ++row) delete[] output[row];
+	delete[] output;
+
+	return 0;
 }
