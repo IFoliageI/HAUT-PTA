@@ -1,19 +1,23 @@
 ﻿#include <iostream>
-#include <cmath>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
-	int input[8192] = {};
-	int output[8192] = {};
+	ios::sync_with_stdio(false);
 
-	for (int cycle = 0;cycle < 8192;++cycle) cin >> input[cycle];
+	int input = 0;
+	cin >> input;
 
-	copy(input + 1, input + input[0] + 1, output);
-	sort(output, output + input[0]);
+	int max_num;
+	cin >> max_num;
 
-	cout << output[input[0] - 1];
+	for (int cycle = 1; cycle < input; ++cycle) {
+		int temp;
+		cin >> temp;
 
+		if (temp > max_num) max_num = temp;
+	}
+
+	cout << max_num;
 	return 0;
 }
