@@ -1,20 +1,18 @@
-﻿#include <cmath>
-#include <iomanip>
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 int main()
 {
-	double input[2] = {};
-	double output = 0;
+	int input[2] = {};
+	int mid = 0, output = 0;
 
 	cin >> input[0] >> input[1];
 
-	for (int cycle = 0; cycle < input[1]; ++cycle) {
-		output += input[0];
-		input[0] = sqrt(input[0]);
+	for (int cycle = 0;cycle < input[0];++cycle) {
+		mid = mid * 10 + input[1];
+		output += mid;
 	}
 
-	cout << fixed << setprecision(2) << output << endl;
+	cout << output;
 	return 0;
 }
