@@ -1,18 +1,24 @@
 ﻿#include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
+
+double factorial(int n) {
+	if (n <= 1) return 1.0;
+	return n * factorial(n - 1);
+}
 
 int main()
 {
-	int input[2] = {};
-	int mid = 0, output = 0;
+	double input = 0, output = 0;
 
-	cin >> input[0] >> input[1];
+	cin >> input;
 
-	for (int cycle = 0;cycle < input[0];++cycle) {
-		mid = mid * 10 + input[1];
-		output += mid;
+	for (int cycle = 0;cycle < 10;++cycle) {
+		if (cycle == 0) output = input;
+		else output += pow(-1, cycle) * (pow(input, (2 * cycle + 1)) / factorial(2 * cycle + 1));
 	}
 
-	cout << output;
+	cout << fixed << setprecision(3) << output;
 	return 0;
 }
