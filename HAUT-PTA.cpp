@@ -1,24 +1,21 @@
 ﻿#include <iostream>
-#include <algorithm>
-#include <cctype>
+#include <vector>
 
 using namespace std;
 
 int main()
 {
-	int Input[1000] = {};
-	int Count = 0, Output[1000] = {};
+	vector<int> Input;
+	char temp;
 
-	for (int cycle = 0;;++cycle) {
-		cin >> Input[cycle];
-		++Count;
-		if (Input[cycle] < 0) break;
+	while (cin.get(temp) && temp != ' ') {
+		if (temp >= '0' && temp <= '9') Input.push_back(temp - '0');
 	}
 
-	copy(Input, Input + (Count - 1), Output);
-	sort(Output, Output + (Count - 1));
-
-	cout << Output[Count - 2];
+	for (int cycle = (int) Input.size() - 1; cycle >= 0; --cycle) {
+		cout << Input.at(cycle);
+		if (cycle != 0) cout << " ";
+	}
 
 	return 0;
 }
