@@ -1,22 +1,24 @@
 ﻿#include <iostream>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
-long long factorial(int input) {
-	if (input <= 1) return 1.0;
-	return input * factorial(input - 1);
-}
+int main()
+{
+	int Input[1000] = {};
+	int Count = 0, Output[1000] = {};
 
-int main() {
-	int input = 0, output = 1;
-	long long mid = 0;
-
-	cin >> input;
-
-	for (;;++output) {
-		mid += factorial(output);
-		if (mid >= input) break;
+	for (int cycle = 0;;++cycle) {
+		cin >> Input[cycle];
+		++Count;
+		if (Input[cycle] < 0) break;
 	}
 
-	cout << "m<=" << output - 1;
+	copy(Input, Input + (Count - 1), Output);
+	sort(Output, Output + (Count - 1));
+
+	cout << Output[Count - 2];
+
+	return 0;
 }
