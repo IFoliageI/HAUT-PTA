@@ -2,15 +2,23 @@
 using namespace std;
 
 int main() {
-	int input = 0;
-	int mid = 0, output = 1;
+	int input = 0, output = 0;
+	int mid[2] = { 1,1 };
 
 	cin >> input;
 
-	for (int cycle = 1;cycle < input;++cycle) {
-		output = (output + 1) * 2;
+	if (input == 1 || input == 2) {
+		output = 1;
+	}
+	else {
+		for (int cycle = 3; cycle <= input; ++cycle) {
+			output = mid[0] + mid[1];
+			mid[0] = mid[1];
+			mid[1] = output;
+		}
 	}
 
 	cout << output;
+
 	return 0;
 }
