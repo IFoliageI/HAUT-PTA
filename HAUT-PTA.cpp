@@ -2,24 +2,21 @@
 
 using namespace std;
 
-bool isPrime(int input) {
-
-	if (input < 2) return false;
-
-	for (int cycle = 2; cycle * cycle <= input; ++cycle) {
-		if (input % cycle == 0) {
-			return false;
-		}
-	}
-
-	return true;
+long long factorial(int input) {
+	if (input <= 1) return 1.0;
+	return input * factorial(input - 1);
 }
 
 int main() {
-	int input = 0;
+	int input = 0, output = 1;
+	long long mid = 0;
 
 	cin >> input;
 
-	if (isPrime(input)) cout << "Yes";
-	else cout << "No";
+	for (;;++output) {
+		mid += factorial(output);
+		if (mid >= input) break;
+	}
+
+	cout << "m<=" << output - 1;
 }
