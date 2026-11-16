@@ -1,21 +1,16 @@
-﻿#include <iomanip>
-#include <ios>
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
-int main()
-{
-	double input = 0;
+int main() {
+	int input = 0;
+	int mid = 0, output = 1;
+
 	cin >> input;
 
-	double output = input;
-	double mid = input;
-
-	for (int cycle = 1; cycle < 10; ++cycle) {
-		mid = mid * (-input * input) / ((2 * cycle) * (2 * cycle + 1));
-		output += mid;
+	for (int cycle = 1;cycle < input;++cycle) {
+		output = (output + 1) * 2;
 	}
 
-	cout << fixed << setprecision(3) << output;
+	cout << output;
 	return 0;
 }
