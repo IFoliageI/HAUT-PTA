@@ -1,27 +1,27 @@
 ﻿#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int main() {
-	int input = 0;
-	int out[1024] = {};
-	int len = 0;
-	int mid;
+int main()
+{
+	vector<int> Input;
+	vector<int> Output;
+	Input.reserve(256);
+	Output.reserve(256);
+	char temp;
 
-	cin >> input;
-
-	mid = input;
-
-	if (mid == 0) out[len++] = 0;
-	else {
-		while (mid > 0) {
-			out[len++] = mid % 10;
-			mid /= 10;
-		}
+	while (cin.get(temp) && temp != ' ') {
+		if (temp >= '0' && temp <= '9') Input.emplace_back(temp - '0');
 	}
 
-	for (int cycle = len - 1; cycle >= 0; --cycle) {
-		if (cycle != len - 1) cout << " ";
-		cout << out[cycle];
+	Output = Input;
+
+	for (int cycle = 0; cycle <= (int)Output.size() - 1; ++cycle) {
+		cout << Output.at(cycle);
+		if (cycle != (int)Output.size() - 1) cout << " ";
 	}
 
+	return 0;
 }
