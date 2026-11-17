@@ -1,21 +1,27 @@
 ﻿#include <iostream>
-#include <vector>
-
 using namespace std;
 
-int main()
-{
-	vector<int> Input;
-	char temp;
+int main() {
+	int input = 0;
+	int out[1024] = {};
+	int len = 0;
+	int mid;
 
-	while (cin.get(temp) && temp != ' ') {
-		if (temp >= '0' && temp <= '9') Input.push_back(temp - '0');
+	cin >> input;
+
+	mid = input;
+
+	if (mid == 0) out[len++] = 0;
+	else {
+		while (mid > 0) {
+			out[len++] = mid % 10;
+			mid /= 10;
+		}
 	}
 
-	for (int cycle = (int) Input.size() - 1; cycle >= 0; --cycle) {
-		cout << Input.at(cycle);
-		if (cycle != 0) cout << " ";
+	for (int cycle = len - 1; cycle >= 0; --cycle) {
+		if (cycle != len - 1) cout << " ";
+		cout << out[cycle];
 	}
 
-	return 0;
 }
