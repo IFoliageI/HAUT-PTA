@@ -1,23 +1,33 @@
-﻿#include <iostream>
+﻿#include <cctype>
+#include <iostream>
+#include <vector>
+
 using namespace std;
 
-int GCD(int mid1, int mid2) {
-	while (mid2 != 0) {
-		int mid3 = mid1 % mid2;
-		mid1 = mid2;
-		mid2 = mid3;
+int main()
+{
+	vector<char>Input;
+	vector<char>Output;
+	int Count = 0;
+	char temp;
+
+	for (int cycle = 0;; ++cycle) {
+		cin.get(temp);
+		Input.emplace_back(tolower(temp));
+		if (Input[cycle] == '@') break;
+		++Count;
 	}
-	return mid1;
-}
 
-int main() {
-	int input1 = 0, input2 = 0;
-	int GCDresult = 0, LCM = 0;
+	Output = Input;
 
-	cin >> input1 >> input2;
+	for (int cycle = 0; cycle < Count; ++cycle) {
+		if (isalpha(Output.at(cycle)) && Output.at(cycle) != 'z') Output.at(cycle) = (char)(Output.at(cycle) + 1);
+		else if (Output.at(cycle) == 'z') Output.at(cycle) = 'a';
+	}
 
-	GCDresult = GCD(input1, input2);
-	LCM = input1 / GCDresult * input2;
+	for (int cycle = 0; cycle < Count; ++cycle) {
+		cout << Output.at(cycle);
+	}
 
-	cout << GCDresult << " " << LCM;
+	return 0;
 }
