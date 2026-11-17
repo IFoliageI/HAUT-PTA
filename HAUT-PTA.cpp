@@ -1,27 +1,22 @@
 ﻿#include <iostream>
-#include <vector>
-#include <algorithm>
-
 using namespace std;
 
-int main()
-{
-	vector<int> Input;
-	vector<int> Output;
-	Input.reserve(256);
-	Output.reserve(256);
-	char temp;
+int GCD(int mid1, int mid2) {
+    while (mid2 != 0) {
+        int mid3 = mid1 % mid2;
+        mid1 = mid2;
+        mid2 = mid3;
+    }
+    return mid1;
+}
 
-	while (cin.get(temp) && temp != ' ') {
-		if (temp >= '0' && temp <= '9') Input.emplace_back(temp - '0');
-	}
+int main() {
+    int input1 = 0, input2 = 0;
+    int GCDresult = 0, LCM = 0;
 
-	Output = Input;
+    cin >> input1 >> input2;
 
-	for (int cycle = 0; cycle <= (int)Output.size() - 1; ++cycle) {
-		cout << Output.at(cycle);
-		if (cycle != (int)Output.size() - 1) cout << " ";
-	}
+    GCDresult = GCD(input1, input2);
 
-	return 0;
+    cout << GCDresult;
 }
