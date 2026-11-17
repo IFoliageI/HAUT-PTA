@@ -1,22 +1,18 @@
-﻿#include <cctype>
-#include <cmath>
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 
 int main()
 {
 	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
-	int Num = 0, Output = 0;
+	int input[2] = {};
+	int Output = 0;
 
-	cin >> Num;
+	cin >> input[0] >> input[1];
 
-	int* Input = NULL;
-	Input = new int[Num];
-
-	for (int Cycle = 0;Cycle < Num;++Cycle) cin >> Input[Cycle];
-	for (int Cycle = 0;Cycle < Num;++Cycle) Output += Input[Cycle] * (int)pow(2, Num - 1 - Cycle);
+	Output = input[0] + (input[0] - 1) / (input[1] - 1);
 
 	cout << Output;
 
