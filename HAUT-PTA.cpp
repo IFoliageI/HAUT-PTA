@@ -1,22 +1,20 @@
 ﻿#include <cctype>
 #include <iostream>
-#include <string>
-
+#include <vector>
 using namespace std;
 
-int main() {
-	string Input;
+int main()
+{
+	int Count = 0;
 	char temp;
 
-	while (cin.get(temp) && temp != '@') Input += tolower(temp);
-
-	for (char Output : Input) {
-		if (Output >= 'a' && Output <= 'z') {
-			if (Output == 'z') cout << 'a';
-			else cout << (char)(Output + 1);
-		}
-		else cout << Output;
-		}
-
-		return 0;
+	for (int cycle = 0;; ++cycle) {
+		cin.get(temp);
+		if (temp == '\n') break;
+		if(isalnum(temp)&&!isalpha(temp)) ++Count;
 	}
+
+	cout << Count;
+
+	return 0;
+}
