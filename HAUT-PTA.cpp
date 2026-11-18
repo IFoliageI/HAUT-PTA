@@ -1,45 +1,44 @@
 ﻿#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int DirectionCalculate(int oriDirection, int Command) {
-    int Direction = 0;
-    if (Command == 2) Direction = (oriDirection + 1) % 4;
-    if (Command == 1) Direction = (oriDirection + 3) % 4;
-    if (Command == 3) Direction = oriDirection;
-    return Direction;
-}
-
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
-    int Input[2] = {}, Location[2] = {}, Time[3] = {};
-    int deltaTime = 0, deltaDistance = 0;
-    int Direction = 0;
+	int Input = 0, Temp = 0;
+	vector<int>Count;
+	vector<int>Num;
 
-    for (int Cycle = 0;;++Cycle)
-    {
-        cin >> Input[0] >> Input[1];
+	cin >> Input;
 
-        if (Cycle != 0)Time[0] = Time[1];
-        Time[1] = Input[0];
+	Temp = Input;
 
-        deltaTime = Time[1] - Time[0];
+	Count.resize(Input + 1, 0);
 
-        deltaDistance = deltaTime * 10;
+	for (int Cycle = 2; Cycle <= Temp; ++Cycle) {
+		if (Temp % Cycle == 0) {
+			Num.emplace_back(Cycle);
+			while (Temp % Cycle == 0) {
+				Temp /= Cycle;
+				++Count.at(Cycle);
+			}
+		}
+	}
 
-        if (Direction == 0) Location[1] += deltaDistance;
-        else if (Direction == 2) Location[1] -= deltaDistance;
-        else if (Direction == 3) Location[0] += deltaDistance;
-        else if (Direction == 1) Location[0] -= deltaDistance;
+	bool isFirst = true;
+	for (size_t Cycle = 0; Cycle < Num.size(); ++Cycle) {
+		int factor = Num.at(Cycle);
+		for (int inside_Cycle = 0; inside_Cycle < Count.at(factor); ++inside_Cycle) {
+			if (!isFirst) {
+				cout << " ";
+			}
+			cout << factor;
+			isFirst = false;
+		}
+	}
 
-        Direction = DirectionCalculate(Direction, Input[1]);
-
-        if (Input[1] == 3) break;
-    }
-    cout << -Location[0] << " " << Location[1];
-
-    return 0;
+	return 0;
 }
